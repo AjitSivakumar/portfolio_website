@@ -30,10 +30,42 @@ export default function Home() {
               <h2 className="section-title">About</h2>
               
               <div className="simple-content">
+                <div className="profile-header">
+                  <div className="profile-image-container">
+                    <img 
+                      src="/RL4J1912.JPEG" 
+                      alt="Ajit Sivakumar" 
+                      className="profile-image"
+                    />
+                  </div>
+                  <div className="profile-greeting">
+                    <h3>Hi, I'm Ajit</h3>
+                  </div>
+                </div>
+                
                 <p>
                 Student at NYU studying Mathematics and Computer Science.
-                  Interested in quantitative finance and machine learning. 
-                  <a href="https://gonyuathletics.com/sports/mens-fencing/roster/ajit-sivakumar/15761"> Also a NCAA fencer.</a>
+                  Interested in quantitative finance and machine learning.
+                </p>
+                <p> 
+                  <a href="https://gonyuathletics.com/sports/mens-fencing/roster/ajit-sivakumar/15761" className="ncaa-link">
+                    Also a NCAA fencer.
+                    <img 
+                      src="/NYU_Monogram_1C_black.png" 
+                      alt="NYU" 
+                      className="nyu-logo nyu-logo-light"
+                    />
+                    <img 
+                      src="/NYU_Monogram_white.png" 
+                      alt="NYU" 
+                      className="nyu-logo nyu-logo-dark"
+                    />
+                    <img 
+                      src="/NYU_Monogram_1C_Violet.png" 
+                      alt="NYU" 
+                      className="nyu-logo nyu-logo-purple"
+                    />
+                  </a>
                 </p>
 
                 <div className="courant-logo-container">

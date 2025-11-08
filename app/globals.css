@@ -37,7 +37,7 @@ html.dark-mode {
 
 /* Base styles */
 body {
-  font-family: Arial, sans-serif;
+  font-family: helvetica, sans-serif;
   line-height: 1.5;
   color: var(--text);
   background-color: var(--background);
@@ -1029,6 +1029,43 @@ html {
   margin: 0;
 }
 
+/* Profile Header Layout */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.profile-image-container {
+  flex-shrink: 0;
+}
+
+.profile-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 0;
+  object-fit: cover;
+  object-position: center 30%;
+  border: 3px solid var(--border);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-image:hover {
+  border-color: rgba(147, 51, 234, 1);
+  box-shadow: 0 0 20px rgba(147, 51, 234, 0.3);
+}
+
+.profile-greeting {
+  flex: 1;
+}
+
+.profile-greeting h3 {
+  font-size: 2.0rem;
+  margin: 0;
+  color: var(--text);
+}
+
 .simple-skills {
   display: flex;
   justify-content: flex-start;
@@ -1133,7 +1170,7 @@ html {
 }
 
 .courant-logo {
-  height: 30px;
+  height: 24px;
   width: auto;
   transition: filter 0.2s ease;
 }
@@ -1164,5 +1201,59 @@ html.dark-mode .courant-logo-dark {
   
   html:not(.dark-mode):not(.light-mode) .courant-logo-dark {
     display: block;
+  }
+}
+
+/* NYU Logo Styles */
+.ncaa-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nyu-logo {
+  height: 28px;
+  width: auto;
+  transition: opacity 0.2s ease;
+}
+
+/* Show black logo in light mode, hide others */
+.nyu-logo-light {
+  display: inline-block;
+}
+
+.nyu-logo-dark,
+.nyu-logo-purple {
+  display: none;
+}
+
+/* In dark mode, show white logo, hide others */
+html.dark-mode .nyu-logo-light,
+html.dark-mode .nyu-logo-purple {
+  display: none;
+}
+
+html.dark-mode .nyu-logo-dark {
+  display: inline-block;
+}
+
+/* On hover, show purple logo, hide others */
+.ncaa-link:hover .nyu-logo-light,
+.ncaa-link:hover .nyu-logo-dark {
+  display: none;
+}
+
+.ncaa-link:hover .nyu-logo-purple {
+  display: inline-block;
+}
+
+/* System preference fallback for NYU logo */
+@media (prefers-color-scheme: dark) {
+  html:not(.dark-mode):not(.light-mode) .nyu-logo-light {
+    display: none;
+  }
+  
+  html:not(.dark-mode):not(.light-mode) .nyu-logo-dark {
+    display: inline-block;
   }
 }
