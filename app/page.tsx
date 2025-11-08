@@ -68,7 +68,7 @@ export default function Home() {
                   </a>
                 </p>
 
-                <div className="courant-logo-container">
+                {/* <div className="courant-logo-container">
                   <a href="https://cims.nyu.edu/" target="_blank" rel="noopener noreferrer" className="courant-logo-link">
                     <img 
                       src="/courant_short_black.png" 
@@ -81,7 +81,7 @@ export default function Home() {
                       className="courant-logo courant-logo-dark"
                     />
                   </a>
-                </div>
+                </div> */}
                 
                 <div className="simple-skills">
                   <span>React</span>
