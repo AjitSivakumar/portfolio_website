@@ -89,7 +89,26 @@ export default function Navigation() {
             onClick={() => scrollToSection('home')}
             className="logo-button"
           >
-            AS
+            <svg width="32" height="32" viewBox="0 0 32 32" className="logo-svg">
+              <defs>
+                <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#9333ea" />
+                  <stop offset="100%" stopColor="#7c3aed" />
+                </linearGradient>
+              </defs>
+              <rect width="32" height="32" rx="6" fill="url(#logoGradient)" />
+              <text 
+                x="16" 
+                y="20" 
+                fontFamily="Helvetica Neue, Arial, sans-serif" 
+                fontSize="12" 
+                fontWeight="bold" 
+                textAnchor="middle" 
+                fill="white"
+              >
+                AS
+              </text>
+            </svg>
           </button>
         </div>
         <ul className="nav-menu">
