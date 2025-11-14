@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Navigation from './components/Navigation';
 
 export default function Home() {
 
@@ -15,9 +14,8 @@ export default function Home() {
 
   return (
     <>
-      <Navigation />
       <section id="home" className="floating-name-section">
-        <h1 className="floating-name">AJIT SIVAKUMAR</h1>
+        <h1 className="floating-name">Ajit Sivakumar</h1>
         <div className="floating-footer">
           <p>&copy; 2025 Ajit Sivakumar. All rights reserved.</p>
         </div>
@@ -29,7 +27,7 @@ export default function Home() {
             <div className="about-contact-section">
               <h2 className="section-title">About</h2>
               
-              <div className="simple-content">
+             <div className="simple-content">
                 <div className="profile-header">
                   <div className="profile-image-container">
                     <img 
@@ -44,12 +42,11 @@ export default function Home() {
                 </div>
                 
                 <p>
-                Student at NYU studying Mathematics and Computer Science.
-                  Interested in quantitative finance and machine learning.
+                I'm a student at New York University studying Mathematics and Computer Science, interested in quantitative finance and machine learning.
                 </p>
                 <p> 
                   <a href="https://gonyuathletics.com/sports/mens-fencing/roster/ajit-sivakumar/15761" className="ncaa-link">
-                    Also a NCAA fencer.
+                    I'm an NCAA fencer.
                     <img 
                       src="/NYU_Monogram_1C_black.png" 
                       alt="NYU" 
