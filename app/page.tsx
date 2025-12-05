@@ -106,8 +106,7 @@ export default function Home() {
         
         <div className="description">
           <p>
-            Hi, I'm a mathematics and computer science student who likes applied mathematics 
-            and machine learning. I'm currently studying at New York University.
+            Hi, I'm Ajit, a mathematics and computer science student currently focusing on machine learning and software development. I'm studying at New York University within the Courant Institute.
           </p>
 
           <p className="fencer-info">
@@ -152,7 +151,6 @@ export default function Home() {
 
       <section className="section">
         <h2>Education</h2>
-        
         <a href="https://cims.nyu.edu/" target="_blank" rel="noopener noreferrer">
           <img 
             src={isDarkMode ? "/courant_short_white.png" : "/courant_short_black.png"} 

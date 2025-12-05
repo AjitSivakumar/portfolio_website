@@ -218,6 +218,7 @@ body {
 .coursework h4 {
   font-size: 16px;
   font-weight: 600;
+  margin-top: 12px;
   margin-bottom: 12px;
   color: var(--text-color);
 }
@@ -263,7 +264,7 @@ body {
 }
 
 .project-description {
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.6;
   color: var(--text-color);
 }
@@ -280,7 +281,7 @@ body {
   padding: 2px 6px;
   border-radius: 4px;
   font-family: 'SF Mono', Monaco, 'Inconsolata', 'Roboto Mono', monospace;
-  font-size: 14px;
+  font-size: 16x;
 }
 
 /* Links */
@@ -305,25 +306,6 @@ a {
   transition: color 0.3s ease, border-color 0.3s ease;
 }
 
-/* QR Code */
-.qr-code-container {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  background: white;
-  border: 2px solid var(--border-color);
-  border-radius: 8px;
-  padding: 8px;
-  z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.qr-code {
-  display: block;
-  width: 80px;
-  height: 80px;
-  border-radius: 4px;
-}
 
 /* Dark mode toggle button */
 .theme-toggle {
