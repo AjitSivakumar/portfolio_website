@@ -110,7 +110,7 @@ export default function Home() {
           </p>
 
           <p className="fencer-info">
-            I'm also an NCAA Fencer. 
+            I'm also an NCAA Fencer 
             <a href="https://gonyuathletics.com/sports/mens-fencing/roster/ajit-sivakumar/15761" target="_blank" rel="noopener noreferrer" className="nyu-logo-link">
               <img src="/NYU_Monogram_1C_Violet.png" alt="NYU Athletics" className="nyu-logo" />
             </a>
