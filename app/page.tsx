@@ -178,12 +178,9 @@ export default function Home() {
                 <li>Discrete Mathematics</li>
                 <li>Analysis</li>
                 <li>Theory of Probability</li>
-              </ul>
-              <h4>Upcoming Courses</h4>
-              <ul>
                 <li>Parallel Computing</li>
                 <li>Object Oriented Programming</li>
-                <li>Mathematical Statistics</li>
+                <li>Applied Internet Technology</li>
               </ul>
             </div>
           </div>
