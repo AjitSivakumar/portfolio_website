@@ -106,7 +106,7 @@ export default function Home() {
         
         <div className="description">
           <p>
-            Hi, I'm Ajit, a mathematics and computer science student currently focusing on machine learning and software development. I'm studying at New York University within the Courant Institute.
+            Hi, I'm Ajit, a mathematics and computer science student with a focus on deep learning and software development. I'm studying at New York University within the Courant Institute.
           </p>
 
           <p className="fencer-info">
@@ -234,7 +234,7 @@ export default function Home() {
         
         <div className="project-item">
           <h3><a href="https://github.com/ajitsivakumar/where2meet" target="_blank" rel="noopener noreferrer">Where2Meet</a></h3>
-          <p className="project-tech">Flask, React, </p>
+          <p className="project-tech">Flask, React</p>
           <p className="project-description">
             A full-stack web application that helps users find optimal meeting 
             locations based on their preferences and constraints.
@@ -252,7 +252,7 @@ export default function Home() {
         
         <div className="project-item">
           <h3><a href="https://github.com/AjitSivakumar/FencerPose" target="_blank" rel="noopener noreferrer">Movement Classification System</a></h3>
-          <p className="project-tech">Python, OpenCV, TensorFlow</p>
+          <p className="project-tech"> OpenCV, TensorFlow</p>
           <p className="project-description">
             Real-time movement analysis system using computer vision and 
             machine learning for athletic performance evaluation.
