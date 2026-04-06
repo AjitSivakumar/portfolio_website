@@ -126,6 +126,17 @@ export default function Home() {
         <h2>Experience</h2>
         
         <div className="experience-item">
+          <div className="date">Mar 2026 - Present</div>
+          <div className="role">
+            <h3>Incoming Research Engineering Intern</h3>
+            <p className="company">d_model</p>
+            <p className="description">
+              Working on RLVR, interpretability, and agents with a team of OpenAI, Deepmind, and MATS alum.
+            </p>
+          </div>
+        </div>
+
+        <div className="experience-item">
           <div className="date">Sep 2025 - Present</div>
           <div className="role">
             <h3>Software Engineer Intern</h3>
