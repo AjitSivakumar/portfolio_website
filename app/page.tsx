@@ -2,54 +2,34 @@
 
 import { useState, useEffect } from 'react';
 
+function GitHubIcon({ size = 24 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+    </svg>
+  );
+}
+
+function LinkedInIcon({ size = 24 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+    </svg>
+  );
+}
+
 export default function Home() {
   const [currentTime, setCurrentTime] = useState('--:--:--');
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const [visitorCount, setVisitorCount] = useState(0);
+  const [sfTime, setSfTime] = useState('--:--:--');
 
   useEffect(() => {
-    // Initialize visitor counter
-    const currentCount = parseInt(localStorage.getItem('visitorCount') || '0', 10);
-    const newCount = currentCount + 1;
-    setVisitorCount(newCount);
-    localStorage.setItem('visitorCount', newCount.toString());
-  }, []);
+    const formatTime = (date: Date, timeZone: string) =>
+      date.toLocaleTimeString('en-US', { timeZone, hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' });
 
-  useEffect(() => {
-    // Initialize dark mode from localStorage
-    const savedTheme = localStorage.getItem('theme');
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
-      setIsDarkMode(true);
-      document.documentElement.setAttribute('data-theme', 'dark');
-    } else {
-      setIsDarkMode(false);
-      document.documentElement.setAttribute('data-theme', 'light');
-    }
-  }, []);
-
-  useEffect(() => {
     const updateTime = () => {
-      try {
-        const now = new Date();
-        const nycTime = now.toLocaleTimeString('en-US', {
-          timeZone: 'America/New_York',
-          hour12: false,
-          hour: '2-digit',
-          minute: '2-digit',
-          second: '2-digit'
-        });
-        setCurrentTime(nycTime);
-      } catch (error) {
-        // Fallback if timezone support isn't available
-        const now = new Date();
-        const utcTime = now.getUTCHours() - 5; // NYC is UTC-5 (or UTC-4 during DST)
-        const hours = ((utcTime + 24) % 24).toString().padStart(2, '0');
-        const minutes = now.getUTCMinutes().toString().padStart(2, '0');
-        const seconds = now.getUTCSeconds().toString().padStart(2, '0');
-        setCurrentTime(`${hours}:${minutes}:${seconds}`);
-      }
+      const now = new Date();
+      setCurrentTime(formatTime(now, 'America/New_York'));
+      setSfTime(formatTime(now, 'America/Los_Angeles'));
     };
 
     updateTime();
@@ -58,55 +38,27 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
 
-  const toggleTheme = () => {
-    const newTheme = !isDarkMode;
-    setIsDarkMode(newTheme);
-    
-    if (newTheme) {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.setAttribute('data-theme', 'light');
-      localStorage.setItem('theme', 'light');
-    }
-  };
-
   return (
     <>
-      <button 
-        onClick={toggleTheme}
-        className="theme-toggle"
-        aria-label="Toggle dark mode"
-        title={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-      >
-        <div className="x-icon">
-          <div className="x-line1"></div>
-          <div className="x-line2"></div>
-        </div>
-      </button>
-      
       <div className="container">
       <header className="header">
         <div className="header-top">
           <h1 className="name">Ajit Sivakumar</h1>
           <div className="social-links">
             <a href="https://github.com/ajitsivakumar" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="GitHub">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-              </svg>
+              <GitHubIcon />
             </a>
             <a href="https://linkedin.com/in/ajit-sivakumar" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="LinkedIn">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-              </svg>
+              <LinkedInIcon />
             </a>
           </div>
         </div>
-        <p className="title">New York, NY — {currentTime} UTC-5</p>
+        <p className="title">New York, NY : <code>{currentTime} UTC-5</code></p>
+        <p className="title">San Francisco, CA : <code>{sfTime} UTC-8</code></p>
         
         <div className="description">
           <p>
-            Hi, I'm Ajit, a mathematics and computer science student with a focus on deep learning and software development. I'm studying at New York University within the Courant Institute.
+            Hi, I'm Ajit. I am a mathematics and computer science student with a focus on machine learning and full-stack software development. I'm studying at New York University within the Courant Institute. I will be in San Francisco this summer, reach out to connect!
           </p>
 
           <p className="fencer-info">
@@ -118,7 +70,7 @@ export default function Home() {
             and represent NYU in competitions.
           </p>
 
-          <p><strong>Currently learning:</strong> Acoustic Guitar</p>
+          <p><strong>Currently learning:</strong> Reward Hacking</p>
         </div>
       </header>
 
@@ -126,29 +78,28 @@ export default function Home() {
         <h2>Experience</h2>
         
         <div className="experience-item">
-          <div className="date">Mar 2026 - Present</div>
           <div className="role">
             <h3>Incoming Research Engineering Intern</h3>
-            <p className="company">d_model</p>
+            <p className="company">d<sub>model</sub></p>
             <p className="description">
-              Working on RLVR, interpretability, and agents with a team of OpenAI, Deepmind, and MATS alum.
+              Engineering reinforcment learning environments with a team of OpenAI, Anthropic, Deepmind, and MATS alum.
             </p>
           </div>
+          <div className="date">March 2026 - Present</div>
         </div>
 
         <div className="experience-item">
-          <div className="date">Sep 2025 - Present</div>
           <div className="role">
             <h3>Software Engineer Intern</h3>
             <p className="company">Superfocus.ai</p>
             <p className="description">
-              Developing conversational memory for embedded LLMs.
+              Developed conversational memory modules with temporal decay for embedded LLMs.
             </p>
           </div>
+          <div className="date">September 2025 - March 2026</div>
         </div>
 
         <div className="experience-item">
-          <div className="date">June - August 2025</div>
           <div className="role">
             <h3>Research Intern</h3>
             <p className="company">Rebellion Research</p>
@@ -156,6 +107,7 @@ export default function Home() {
               Built a python-based machine learning pipeline using XGBoost and SHAP to analyze factor importance in ETFs.
             </p>
           </div>
+          <div className="date">June - September 2025</div>
         </div>
 
       </section>
@@ -164,7 +116,7 @@ export default function Home() {
         <h2>Education</h2>
         <a href="https://cims.nyu.edu/" target="_blank" rel="noopener noreferrer">
           <img 
-            src={isDarkMode ? "/courant_short_white.png" : "/courant_short_black.png"} 
+            src="/courant_short_black.png"
             alt="Courant Institute" 
             className="courant-logo-section" 
           />
@@ -285,7 +237,7 @@ export default function Home() {
         
         <div className="contact-info">
           <p>
-            You can reach me on <code>ajit[dot]sivakumar[at]gmail[dot]com</code>, or connect 
+            You can reach me on <code>ajit [dot] sivakumar [at] gmail [dot] com</code>, or connect 
             with me on <a href="https://linkedin.com/in/ajit-sivakumar" target="_blank" rel="noopener noreferrer">LinkedIn</a>.
           </p>
         </div>
@@ -294,17 +246,13 @@ export default function Home() {
 
     <footer className="footer">
       <div className="footer-content">
-        <p>© 2025 Ajit Sivakumar</p>
+        <p>© 2026 Ajit Sivakumar - Mostly Hardcoded</p>
         <div className="footer-social-links">
           <a href="https://github.com/ajitsivakumar" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="GitHub">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-            </svg>
+            <GitHubIcon size={20} />
           </a>
           <a href="https://linkedin.com/in/ajit-sivakumar" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="LinkedIn">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-            </svg>
+            <LinkedInIcon size={20} />
           </a>
         </div>
       </div>

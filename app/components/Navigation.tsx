@@ -26,8 +26,6 @@ export default function Navigation() {
     const savedTheme = localStorage.getItem('theme');
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
-    console.log('Saved theme:', savedTheme, 'System prefers dark:', systemPrefersDark); // Debug log
-    
     if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
       setIsDarkMode(true);
       document.documentElement.classList.add('dark-mode');
@@ -37,8 +35,6 @@ export default function Navigation() {
       document.documentElement.classList.add('light-mode');
       document.documentElement.classList.remove('dark-mode');
     }
-    
-    console.log('Initial HTML classes:', document.documentElement.className); // Debug log
   }, []);
 
   useEffect(() => {
@@ -65,8 +61,6 @@ export default function Navigation() {
     const newDarkMode = !isDarkMode;
     setIsDarkMode(newDarkMode);
     
-    console.log('Toggling theme to:', newDarkMode ? 'dark' : 'light'); // Debug log
-    
     if (newDarkMode) {
       document.documentElement.classList.add('dark-mode');
       document.documentElement.classList.remove('light-mode');
@@ -76,8 +70,6 @@ export default function Navigation() {
       document.documentElement.classList.remove('dark-mode');
       localStorage.setItem('theme', 'light');
     }
-    
-    console.log('HTML classes:', document.documentElement.className); // Debug log
   };
 
   return (
