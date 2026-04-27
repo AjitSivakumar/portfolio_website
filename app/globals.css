@@ -12,6 +12,7 @@
   --border-color: #d1d9e0;
   --grid-color: rgba(0,0,0,0.02);
   --link-color: #57068c;
+  --accent: #57068c;
   --code-bg: #f6f8fa;
 }
 
@@ -127,7 +128,7 @@ body {
   margin-bottom: 16px;
   margin-top: 24px;
   color: var(--text-color);
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--accent);
   padding-bottom: 8px;
 }
 
@@ -245,7 +246,7 @@ body {
   content: '•';
   position: absolute;
   left: 0;
-  color: var(--text-muted);
+  color: var(--accent);
 }
 
 /* Projects */
@@ -368,6 +369,27 @@ a {
     transform: rotate(360deg);
   }
 }
+
+/* Monospace time display */
+.time-mono {
+  font-family: 'SF Mono', Monaco, 'Inconsolata', 'Roboto Mono', monospace;
+  font-size: 0.95em;
+}
+
+/* Blinking cursor */
+.cursor {
+  display: inline-block;
+  color: var(--accent);
+  animation: blink 1.1s step-start infinite;
+  margin-left: 2px;
+  font-family: 'SF Mono', Monaco, 'Inconsolata', 'Roboto Mono', monospace;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
 
 /* Responsive */
 @media (max-width: 768px) {

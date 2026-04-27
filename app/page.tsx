@@ -53,8 +53,8 @@ export default function Home() {
             </a>
           </div>
         </div>
-        <p className="title">New York, NY : <code>{currentTime} UTC-5</code></p>
-        <p className="title">San Francisco, CA : <code>{sfTime} UTC-8</code></p>
+        <p className="title">New York, NY : <code className="time-mono">{currentTime} UTC-5</code></p>
+        <p className="title">San Francisco, CA : <code className="time-mono">{sfTime} UTC-8</code><span className="cursor" aria-hidden="true"></span></p>
         
         <div className="description">
           <p>
