@@ -84,31 +84,6 @@ code {
   font-family: inherit;
 }
 
-h2::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: -100vw;
-  bottom: 0;
-  height: 3px;
-  background: #000;
-  z-index: 1;
-}
-
-.strips {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 48px;
-  width: 188px;
-  pointer-events: none;
-  background:
-    linear-gradient(#000, #000) 0 0/14px 100% no-repeat,
-    linear-gradient(#000, #000) 58px 0/14px 100% no-repeat,
-    linear-gradient(#000, #000) 116px 0/14px 100% no-repeat,
-    linear-gradient(#000, #000) 174px 0/14px 100% no-repeat;
-}
-
 @media (max-width: 1080px) {
   .strips { display: none; }
 }

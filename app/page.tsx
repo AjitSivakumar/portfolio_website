@@ -37,28 +37,31 @@ export default function Home() {
         <p>
           Hi, I&apos;m Ajit. I am a mathematics and computer science student interested in AI and learning/building cool things. I&apos;m studying at New York University within the Courant Institute.
         </p>
-        <p>I will be in San Francisco this summer, reach out to connect!</p>
+        <p>I am in New York until the Summer! Feel free to reach out.</p>
         <p>
           I&apos;m also an <a href="https://gonyuathletics.com/sports/mens-fencing/roster/ajit-sivakumar/15761" target="_blank" rel="noopener noreferrer">NCAA Fencer</a> and represent NYU in competitions.
         </p>
       </header>
 
       <section>
-        <h2>Research Interests</h2>
+        <h2>Current Research Interests</h2>
         <ul>
-          <li>Reinforcement learning</li>
-          <li>Deep learning</li>
-          <li>Reward modeling</li>
-          <li>Mechanistic interpretability</li>
+          <li>COT/Reasoning Compression</li>
+          <li>Computational bounds of transformers</li>
+          <li>Machine Unlearning</li>
         </ul>
       </section>
 
       <section>
         <h2>Experience</h2>
 
+        <h3>Member of Technical Staff: d<sub>model</sub></h3>
+        <p>August 2026 – Present</p>
+        <p>Engineering reinforcement learning environments with a team of OpenAI, Anthropic, Deepmind, and MATS alum. Focusing on interpretability and alignment.</p>
+
         <h3>Research Engineering Intern: d<sub>model</sub></h3>
-        <p>March 2026 – Present</p>
-        <p>Engineering reinforcement learning environments with a team of OpenAI, Anthropic, Deepmind, and MATS alum.</p>
+        <p>March – August 2026</p>
+        <p>Engineering reinforcement learning environments with a team of OpenAI, Anthropic, Deepmind, and MATS alum. Focusing on interpretability and alignment.</p>
 
         <h3>Software Engineer Intern: Superfocus.ai</h3>
         <p>September 2025 – March 2026</p>
@@ -152,7 +155,7 @@ export default function Home() {
       <section>
         <h2>Contact</h2>
         <p>
-          You can reach me at <code>ajit [dot] sivakumar [at] gmail [dot] com</code>, or connect with me on{' '}
+          You can reach me at <code>firstname [dot] lastname [at] gmail [dot] com</code>, or connect with me on{' '}
           <a href="https://linkedin.com/in/ajit-sivakumar" target="_blank" rel="noopener noreferrer">LinkedIn</a>.
         </p>
       </section>
